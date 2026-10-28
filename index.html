@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eka Game Notes</title>
+<meta name="description" content="Frame-time logs and stutter measurements from a mid-range Android phone, kept in Jakarta.">
+<link rel="canonical" href="https://ekaputrigame.github.io/">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0f1115; color: #d7dbe0;
+         font: 16px/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  .wrap { max-width: 60rem; margin: 0 auto; padding: 2.5rem 1.5rem 4rem;
+          display: grid; gap: 2.5rem; grid-template-columns: minmax(0, 1fr) 15rem; }
+  @media (max-width: 46rem) { .wrap { grid-template-columns: 1fr; } }
+  h1 { font-size: 1.9rem; margin: 0; letter-spacing: .02em; }
+  h1 span { color: #6ee7a8; }
+  .tag { color: #8b95a3; font-size: .85rem; margin-top: .4rem; }
+  h2 { font-size: 1.05rem; color: #6ee7a8; margin: 0 0 .5rem; font-weight: 600; }
+  .stamp { color: #8b95a3; font-size: .8rem; margin-bottom: 1.5rem; }
+  article p { margin: 0 0 1.05rem; }
+  aside { border-left: 2px solid #23272f; padding-left: 1.1rem; font-size: .82rem; color: #9aa4b2; }
+  aside b { color: #d7dbe0; display: block; font-size: .78rem;
+            text-transform: uppercase; letter-spacing: .08em; margin-bottom: .35rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .82rem; margin: .5rem 0 1.5rem; }
+  caption { text-align: left; color: #8b95a3; font-size: .78rem; padding-bottom: .4rem; }
+  th, td { text-align: left; padding: .38rem .5rem; border-bottom: 1px solid #23272f; }
+  th { color: #8b95a3; font-weight: 500; }
+  ul { margin: 0 0 1.2rem; padding-left: 1.1rem; }
+  li { margin-bottom: .45rem; }
+  a { color: #7cc4ff; }
+  footer { grid-column: 1 / -1; border-top: 1px solid #23272f; padding-top: 1rem;
+           color: #6b7482; font-size: .78rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <main>
+    <header>
+      <h1>Eka Game <span>Notes</span></h1>
+      <p class="tag">frame-time logs from a mid-range Android phone · Jakarta</p>
+    </header>
+
+    <article>
+      <h2>Average FPS is a lie: two weeks of frame-time logs</h2>
+      <p class="stamp">28 October 2026 · Eka Putri</p>
+
+      <p>Almost every phone review gives you one number, the average frame rate, and then moves on. I wanted to understand why a handset that holds a respectable 58 fps still feels sticky under the thumb, so for two weeks I logged frame times instead of frame rates.</p>
+
+      <p>Setup: one mid-range Android phone, an overlay sampling every frame, and twenty-minute sessions in three games — a 60 fps shooter, an open-world RPG locked at 30, and a racing title. Per session I logged the one-percent low, the frames delivered later than 32 ms, and any stall over 200 ms. Each test ran once in a 25 °C room, once after forty minutes of play.</p>
+
+      <table>
+        <caption>Same phone, same games, four sessions each</caption>
+        <tr><th>Metric</th><th>Cool</th><th>Warm</th></tr>
+        <tr><td>Average fps</td><td>57–59</td><td>55–58</td></tr>
+        <tr><td>One-percent low</td><td>41 fps</td><td>29 fps</td></tr>
+        <tr><td>Frames over 32 ms</td><td>1.8 %</td><td>5.6 %</td></tr>
+      </table>
+
+      <p>Three things surprised me. First, the average barely moved while the late-frame count tripled, which is exactly why the averages are useless. Second, the worst stutters were not in the busiest fights: they clustered in the first ninety seconds of a match, while shaders compiled, and right after a map load, when storage woke up. Third, capping the game at 45 fps looked smoother than leaving it unlocked at 60 and letting it dip.</p>
+
+      <p>So: if a phone feels bad but benchmarks look fine, watch the frame-time graph, not the counter. The raw logs and the longer write-ups live at <a href="https://ekagamenotes.blogspot.com">my game notes</a>.</p>
+    </article>
+  </main>
+
+  <aside>
+    <p><b>Test bench</b>8 GB RAM · 120 Hz panel · ~USD 200<br>Android 14 · no root · overlay sampling at 120 Hz</p>
+    <p><b>What this page is</b>A plain log. No trackers, no affiliate links, no newsletter pop-up. Numbers get published when a pattern shows up twice.</p>
+  </aside>
+
+  <footer>Last updated 28 October 2026 · Jakarta, Indonesia</footer>
+</div>
+</body>
+</html>
